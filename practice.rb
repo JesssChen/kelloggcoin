@@ -17,6 +17,38 @@ blockchain = [
   { "from_user" => "anthony", "to_user" => "evan", "amount" => 1750 }
 ]
 
+balances = {}
+
+for transaction in blockchain
+  from_user=transaction["from_user"]
+  to_user=transaction["to_user"]
+  amount=transaction["amount"]
+
+  if from_user
+    balances[from_user] ||= 0 
+    balances[from_user] -= amount
+  end
+
+  if to_user
+    balances[to_user] ||= 0 
+    balances[to_user] += amount
+  end
+end
+
+for user, balance in balances
+  puts "#{user.capitalize}'s KelloggCoin balance is #{balance}"
+end
+
+
+
+
+
+
+
+
+
+
+
 # Write code below that returns the number of KelloggCoin that each user has in their 
 # KelloggCoin "wallet".
 
@@ -27,3 +59,13 @@ blockchain = [
 # Anthony's KelloggCoin balance is 2650
 
 # 👇👇👇 Your code HERE 👇👇👇
+
+
+
+
+
+
+
+
+
+
